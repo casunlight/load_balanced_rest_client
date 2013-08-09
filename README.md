@@ -3,8 +3,6 @@ Load Balanced Rest Client
 
 Automatically load balances a [Rest Client](https://github.com/rest-client/rest-client), allowing you to enjoy the benefits of redundancy without any additional points of failure.
 
-This is a WIP. When production-ready, it will be moved to a new repo under BitLove.
-
 Usage
 -----
 
