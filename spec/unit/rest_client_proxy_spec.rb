@@ -6,28 +6,15 @@ describe 'RestClientProxyCall' do
     @client            = mock("LoadBalancedRestClient::Client", :[] => @client_w_uri)
     @server            = mock("LoadBalancedRestClient::Server", :client => @client)
     @load_balancer     = mock("LoadBalancedRestClient::LoadBalancer", :with_server => @server)
-    @proxy_call_w_res  = LoadBalancedRestClient::RestClientProxyCall.new(@load_balancer, "test")
-    @proxy_call_wo_res = LoadBalancedRestClient::RestClientProxyCall.new(@load_balancer)
+    @proxy_call        = LoadBalancedRestClient::RestClientProxyCall.new(@load_balancer, "test")
   end
 
-  context "with a sub-resource" do
-    it "delegates to RestClient" do
-      @load_balancer.should_receive(:with_server).and_yield(@server)
-      @server.should_receive(:client)
-      @client.should_receive(:[]).with("test")
-      @client_w_uri.should_receive(:get)
+  it "delegates to RestClient" do
+    @load_balancer.should_receive(:with_server).and_yield(@server)
+    @server.should_receive(:client)
+    @client.should_receive(:[]).with("test")
+    @client_w_uri.should_receive(:get)
 
-      @proxy_call_w_res.get
-    end
-  end
-
-  context "without a sub-resource" do
-    it "delegates to RestClient" do
-      @load_balancer.should_receive(:with_server).and_yield(@server)
-      @server.should_receive(:client)
-      @client.should_receive(:get)
-
-      @proxy_call_wo_res.get
-    end
+    @proxy_call.get
   end
 end

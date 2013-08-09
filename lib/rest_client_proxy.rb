@@ -7,8 +7,7 @@ class LoadBalancedRestClient
 
     def method_missing(method_name, *args, &blk)
       @load_balancer.with_server do |server|
-        client = @uri ? server.client[@uri] : server.client
-        client.send(method_name, *args, &blk)
+        server.client[@uri].send(method_name, *args, &blk)
       end
     end
   end
