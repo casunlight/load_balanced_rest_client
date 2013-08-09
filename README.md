@@ -93,4 +93,4 @@ Aside from the usual unit tests, this library comes with several acceptance test
 Credits
 -------
 
-Written by Eric Rafaloff, BitLove, Inc. See LICENSE for details.
+Written by Eric Rafaloff, BitLove, Inc.
