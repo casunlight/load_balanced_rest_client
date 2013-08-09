@@ -7,7 +7,7 @@ class LoadBalancedRestClient
       @cluster                = cluster
       @human_readable_cluster = cluster.servers_to_try.join(", ")
       @exceptions_to_catch    = options[:catch]     || [Errno::ECONNREFUSED, Errno::EHOSTUNREACH,
-                                                        ::RestClient::ServerBrokeConnection, ::RestClient::RequestTimeout]
+                                                        RestClient::ServerBrokeConnection, RestClient::RequestTimeout]
       @max_tries              = options[:max_tries] || 4
       @logger                 = options[:logger]    || Logger.new(STDOUT)
       @try_counter            = 0
