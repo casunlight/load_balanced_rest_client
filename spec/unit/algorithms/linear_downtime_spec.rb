@@ -23,5 +23,3 @@ describe 'Linear Downtime' do
     end
   end
 end
-
-

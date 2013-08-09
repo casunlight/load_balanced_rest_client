@@ -12,4 +12,3 @@ class LoadBalancedRestClient
     end
   end
 end
-

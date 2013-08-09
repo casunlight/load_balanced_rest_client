@@ -30,4 +30,3 @@ describe 'Expoential Downtime' do
     end
   end
 end
-
