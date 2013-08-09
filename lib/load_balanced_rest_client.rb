@@ -1,11 +1,11 @@
 require 'rest-client'
 require 'logger'
-require_relative 'lib/version'
-require_relative 'lib/server'
-require_relative 'lib/cluster'
-require_relative 'lib/algorithms'
-require_relative 'lib/load_balancer'
-require_relative 'lib/rest_client_proxy'
+require_relative 'version'
+require_relative 'server'
+require_relative 'cluster'
+require_relative 'algorithms'
+require_relative 'load_balancer'
+require_relative 'rest_client_proxy'
 
 class LoadBalancedRestClient
   attr_accessor :cluster, :load_balancer

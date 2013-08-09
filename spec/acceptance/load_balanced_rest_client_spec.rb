@@ -1,4 +1,4 @@
-require './load_balanced_rest_client'
+require './lib/load_balanced_rest_client'
 require './spec/helper'
 
 include SpecHelper
