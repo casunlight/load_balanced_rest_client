@@ -18,7 +18,7 @@ class LoadBalancedRestClient
     end
 
     def method_missing(method_name, *args, &blk)
-      RestClientProxyCall.new(@load_balancer).send_method(method_name, *args, &blk)
+      RestClientProxyCall.new(@load_balancer).send(method_name, *args, &blk)
     end
   end
 end
