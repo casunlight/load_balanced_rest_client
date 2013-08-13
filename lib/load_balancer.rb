@@ -10,13 +10,13 @@ class LoadBalancedRestClient
                                                         RestClient::ServerBrokeConnection, RestClient::RequestTimeout]
       @max_tries              = options[:max_tries] || 4
       @logger                 = options[:logger]    || Logger.new(STDOUT)
-      @try_counter            = 0
 
       @logger.info "Setting up load balancing: #{@human_readable_cluster}"
     end
 
     def with_server(&req_blk)
-      result = false
+      @try_counter = 0
+      result       = false
 
       until result or @try_counter == @max_tries do
         @try_counter += 1
@@ -26,9 +26,6 @@ class LoadBalancedRestClient
         @logger.info "#{human_readable_request_counter}: Trying #{@server}"
         result = try_request(&req_blk)
       end
-
-      # Reset the try counter after we're done
-      @try_counter = 0
 
       if result
         result
